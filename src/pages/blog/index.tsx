@@ -28,7 +28,8 @@ const Blog = () => {
 export async function getStaticProps() {
   // api call
 
-  console.log("call first....");
+  // console.log("call first....");
+  console.log(process.env.url);
   return {
     props: {
       data: [{ id: 3 }, { id: 4 }],

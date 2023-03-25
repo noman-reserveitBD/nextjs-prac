@@ -8,7 +8,7 @@ interface BlogData {
 
 function BlogPost() {
   const onAddBlog = (data: BlogData): {} => {
-    console.log(data);
+    // console.log(data);
     return data;
   };
 
