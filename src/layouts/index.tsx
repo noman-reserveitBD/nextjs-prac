@@ -1,21 +1,20 @@
 import React, { ReactNode } from "react";
 import Header from "@/components/header";
-import {LS} from "../utils/localstorage"
+import { LS } from "../utils/localstorage";
 
 interface MyComponentProps {
-  children: ReactNode;
+  children: React.ReactNode | React.ReactNode[];
 }
 
-function Layout({ children }: MyComponentProps) {
-
- const res=  LS.getValue("my key");
- console.log(res)
+const Layout: React.FC<MyComponentProps> = ({ children }: MyComponentProps) => {
+  const res = LS.getValue("my key");
+  //  console.log(res)
   return (
     <>
       <Header />
       {children}
     </>
   );
-}
+};
 
 export default Layout;
