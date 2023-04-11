@@ -10,7 +10,8 @@ interface IUsers {
 }
 
 function Users({ users }: IUsers) {
-  // console.log(users);
+  // console.log(process.env.NEXT_PUBLIC_API_URL);
+
   return (
     <>
       <h1>User Information.</h1>
@@ -29,7 +30,7 @@ function Users({ users }: IUsers) {
 
 export async function getStaticProps() {
   const res = await axios.get("https://jsonplaceholder.typicode.com/users");
-
+  // console.log(process.env.url);
   return {
     props: {
       users: res.data,

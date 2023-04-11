@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
 const Blog = () => {
-  const data = [
+  const [data, setData] = useState([]);
+  const dataa = [
     { id: 1, name: "blog one" },
     {
       id: 2,
@@ -11,16 +12,34 @@ const Blog = () => {
     { id: 3, name: "blog three" },
   ];
 
+  async function name() {
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setData(data);
+      })
+      .catch((err) => console.log("something is wrong" + err));
+  }
+
+  useEffect(() => {
+    (async () => {
+      await name();
+    })();
+  }, []);
+
+  console.log(data);
+
   return (
     <React.Fragment>
       <h1>Blogs Page</h1>
-      <ul>
+      {/* <ul>
         {data?.map((data) => (
           <Link href={`blog/${encodeURIComponent(data.id)}`} key={data.id}>
             {data.name}
           </Link>
         ))}
-      </ul>
+      </ul> */}
     </React.Fragment>
   );
 };

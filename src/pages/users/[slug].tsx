@@ -17,13 +17,12 @@ interface IUser {
 }
 
 function User(props: IUser) {
-  console.log(props.data);
+  // console.log(props.data);
 
   return (
     <>
       <h1>User name: {props.data.name}</h1>
       <h1>User Phone: {props.data.phone}</h1>
-      <p>asdfasd </p>
     </>
   );
 }
@@ -35,7 +34,7 @@ export async function getServerSideProps(context: any) {
     `https://jsonplaceholder.typicode.com/users/${uid}`
   );
 
-  console.log(res);
+  // console.log(res);
 
   return {
     props: {
