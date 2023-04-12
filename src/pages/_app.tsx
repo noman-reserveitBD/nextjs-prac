@@ -6,6 +6,7 @@ import { isIncognito } from "@/utils/detectIncognito";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [isAllowed, setIsAllowed] = React.useState(false);
+  const [show, setShow] = React.useState(false);
   // console.log(isAllowed);
   React.useEffect(() => {
     const checkIncognito = async () => {
@@ -17,8 +18,9 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
 
   useEffect(() => {
-    function preventRightClick(e) {
+    function preventRightClick(e: { preventDefault: () => void }) {
       e.preventDefault();
+      setShow(!show);
     }
     document.addEventListener("contextmenu", preventRightClick);
     return () => {
@@ -30,11 +32,16 @@ export default function App({ Component, pageProps }: AppProps) {
     return <p>You cannot access this page in incognito mode</p>;
   }
 
+  setTimeout(() => {
+    setShow(false);
+  }, 2000);
+
   return (
     <>
       {isAllowed && (
         <Layout>
           <Component {...pageProps} />
+          {show && <p>You are not allowed.</p>}
         </Layout>
       )}
     </>

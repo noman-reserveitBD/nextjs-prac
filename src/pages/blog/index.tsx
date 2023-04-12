@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import axiosInstance from "../../service/axiosInstance";
 
 const Blog = () => {
   const [data, setData] = useState([]);
@@ -13,13 +14,17 @@ const Blog = () => {
   ];
 
   async function name() {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setData(data);
-      })
-      .catch((err) => console.log("something is wrong" + err));
+    // fetch("https://jsonplaceholder.typicode.com/posts")
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     setData(data);
+    //   })
+    //   .catch((err) => console.log("something is wrong" + err));
+
+    const response = await axiosInstance.get("/posts");
+    console.log(response);
+    return response.data;
   }
 
   useEffect(() => {
