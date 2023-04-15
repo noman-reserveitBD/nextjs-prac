@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import Layout from "@/layouts";
+import { SessionProvider } from "next-auth/react";
+
 import "@/styles/globals.css";
-import type { AppProps } from "next/app";
 import { isIncognito } from "@/utils/detectIncognito";
+import type { AppProps } from "next/app";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [isAllowed, setIsAllowed] = React.useState(false);
@@ -32,9 +34,9 @@ export default function App({ Component, pageProps }: AppProps) {
     return <p>You cannot access this page in incognito mode</p>;
   }
 
-  setTimeout(() => {
-    setShow(false);
-  }, 2000);
+  // setTimeout(() => {
+  //   setShow(false);
+  // }, 2000);
 
   return (
     <>

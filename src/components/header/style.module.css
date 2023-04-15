@@ -1,7 +1,4 @@
 .header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     padding: 10px;
     background-color: darkgrey;
     height: 4rem;
